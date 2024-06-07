@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace ApiTestePraticoDesenvolvedor.Api.Controllers;
 
 [ApiController]
-public class ContaController(ICompraService compraService) : Controller
+[Route("[controller]")]
+public class ContaController(ICompraService compraService) : ControllerBase
 {
     private readonly ICompraService _compraService = compraService;
 
     [HttpPost]
     [Route("/Pagar")]
+    [ProducesResponseType<CompraIncluirResponse>(StatusCodes.Status201Created)]
     public IActionResult PagarConta([FromBody] CompraIncluirRequest request)
     {
 
@@ -27,6 +29,7 @@ public class ContaController(ICompraService compraService) : Controller
 
     [HttpGet]
     [Route("/Consultar")]
+    [ProducesResponseType<CompraListagemResponse>(StatusCodes.Status200OK)]
     public IActionResult Consultar([FromQuery] string? id)
     {
         var compras = _compraService.Listar(id);

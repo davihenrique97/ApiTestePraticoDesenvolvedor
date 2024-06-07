@@ -16,7 +16,7 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
         var pagamentoValido = _compraRepository
             .VerificaPagamento(request.DataPagamento);
 
-        if (pagamentoValido is false)
+        if (!pagamentoValido)
         {
             return new CompraIncluirResponse
             {
@@ -31,7 +31,7 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
 
         var result = _compraRepository.CadastrarConta(contaDto);
 
-        if (result is false)
+        if (!result)
         {
             return new CompraIncluirResponse
             {

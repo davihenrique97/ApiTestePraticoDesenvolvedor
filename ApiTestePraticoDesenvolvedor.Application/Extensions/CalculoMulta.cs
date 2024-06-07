@@ -5,11 +5,9 @@ public static class CalculoMulta
 {
     private static double CalcularMulta(ContaDto contaDto, int diasCorridos)
     {
-        const double SEM_MULTA = 0;
-
-        if (diasCorridos == SEM_MULTA)
+        if (diasCorridos == 0)
         {
-            return SEM_MULTA;
+            return 0;
         }
 
         if (diasCorridos <= 3)
@@ -21,21 +19,15 @@ public static class CalculoMulta
         {
             return contaDto.ValorOriginal * 0.03;
         }
-        if (diasCorridos > 10)
-        {
-            return contaDto.ValorOriginal * 0.05;
-        }
 
-        return SEM_MULTA;
+        return contaDto.ValorOriginal * 0.05;
     }
 
     private static double CalcularJuros(ContaDto contaDto, int diasCorridos)
     {
-        const double SEM_JUROS = 0;
-
-        if (diasCorridos == SEM_JUROS)
+        if (diasCorridos == 0)
         {
-            return SEM_JUROS;
+            return 0;
         }
 
         if (diasCorridos <= 3)
@@ -48,12 +40,7 @@ public static class CalculoMulta
             return contaDto.ValorOriginal * 0.02 * diasCorridos;
         }
 
-        if (diasCorridos > 10)
-        {
-            return contaDto.ValorOriginal * 0.05 * diasCorridos;
-        }
-
-        return SEM_JUROS;
+        return contaDto.ValorOriginal * 0.05 * diasCorridos;
 
     }
 
