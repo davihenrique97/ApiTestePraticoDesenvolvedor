@@ -20,8 +20,9 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
         {
             return new CompraIncluirResponse
             {
-                Status = StatusConta.ProblemaAoPagar,
-                Menssagens = ["Problema ao Pagar a Conta.", "Já Existe Um Pagamento Para Esse Dia!"]
+                Status = StatusConta.ProblemaAoIncluir,
+                Menssagens = ["Problema ao Incluir a Conta.",
+                              $"Já Existe Um Pagamento Com a Data {request.DataPagamento} !"]
             };
         }
 
@@ -35,15 +36,15 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
         {
             return new CompraIncluirResponse
             {
-                Status = StatusConta.ProblemaAoPagar,
-                Menssagens = ["Problema ao Pagar a Conta. Conta não Paga!"]
+                Status = StatusConta.ProblemaAoIncluir,
+                Menssagens = ["Problema ao Incluir a Conta.", "Conta não Inclusa!"]
             };
         }
 
         return new CompraIncluirResponse
         {
-            Status = StatusConta.Pago,
-            Menssagens = ["Conta Paga Com Sucesso."]
+            Status = StatusConta.ContaIncluida,
+            Menssagens = ["Conta Incluída Com Sucesso."]
         };
     }
 

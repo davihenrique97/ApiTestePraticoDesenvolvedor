@@ -1,6 +1,6 @@
 ﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Responses;
 
-namespace ApiTestePraticoDesenvolvedor.Tests.SharedKernel.Mock.Application.Commands.Compra.Responses;
+namespace ApiTestePraticoDesenvolvedor.Tests.SharedKernel.Mock.Application.Commands.Compra.Requests;
 public static class CompraIncluirRequestMock
 {
     public static CompraIncluirRequest GetMocked()
