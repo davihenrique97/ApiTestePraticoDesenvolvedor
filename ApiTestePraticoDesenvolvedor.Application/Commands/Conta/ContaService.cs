@@ -1,19 +1,20 @@
-﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Enum;
-using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Responses;
+﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Enum;
+using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Requests;
+using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Responses;
 using ApiTestePraticoDesenvolvedor.Application.Extensions;
-using ApiTestePraticoDesenvolvedor.Application.Interfaces.Compra;
+using ApiTestePraticoDesenvolvedor.Application.Interfaces.Conta;
 using ApiTestePraticoDesenvolvedor.Domain.Dto;
 using ApiTestePraticoDesenvolvedor.Infra.Interfaces;
 using AutoMapper;
 
-namespace ApiTestePraticoDesenvolvedor.Application.Commands.Compra;
-public class CompraService(ICompraRepository compraRepository, IMapper mapper) : ICompraService
+namespace ApiTestePraticoDesenvolvedor.Application.Commands.Conta;
+public class ContaService(IContaRepository contaRepository, IMapper mapper) : IContaService
 {
-    private readonly ICompraRepository _compraRepository = compraRepository;
+    private readonly IContaRepository _contaRepository = contaRepository;
     private readonly IMapper _mapper = mapper;
-    public ContaIncluirResponse Incluir(CompraIncluirRequest request)
+    public ContaIncluirResponse Incluir(ContaIncluirRequest request)
     {
-        var pagamentoValido = _compraRepository
+        var pagamentoValido = _contaRepository
             .VerificaPagamento(request.DataPagamento);
 
         if (!pagamentoValido)
@@ -30,7 +31,7 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
 
         contaDto.CalcularMultaEJuros();
 
-        var result = _compraRepository.CadastrarConta(contaDto);
+        var result = _contaRepository.CadastrarConta(contaDto);
 
         if (!result)
         {
@@ -57,7 +58,7 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
         {
             var idContaGuid = new Guid(idConta);
 
-            var resultadoconta = _compraRepository.PesquisarConta(idContaGuid);
+            var resultadoconta = _contaRepository.PesquisarConta(idContaGuid);
             if (resultadoconta != null)
             {
                 contas.Add(resultadoconta);
@@ -66,7 +67,7 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
         }
         else
         {
-            var resultadoContas = _compraRepository.ListaContasCadastradas();
+            var resultadoContas = _contaRepository.ListaContasCadastradas();
             contas = _mapper.Map<IList<ContaDto>>(resultadoContas);
         }
 

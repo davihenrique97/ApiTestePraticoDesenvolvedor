@@ -1,5 +1,8 @@
 name: Pull Request - ApiTestePraticoDesenvolvedor
 on:
+  push:
+    branches:
+      - develop
   pull_request:
     branches:
       - main

@@ -1,20 +1,21 @@
-﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Enum;
-using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Responses;
-using ApiTestePraticoDesenvolvedor.Application.Interfaces.Compra;
+﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Enum;
+using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Requests;
+using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Responses;
+using ApiTestePraticoDesenvolvedor.Application.Interfaces.Conta;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiTestePraticoDesenvolvedor.Api.Controllers;
 
 [ApiController]
 [Route("/")]
-public class ContaController(ICompraService compraService) : ControllerBase
+public class ContaController(IContaService compraService) : ControllerBase
 {
-    private readonly ICompraService _compraService = compraService;
+    private readonly IContaService _compraService = compraService;
 
     [HttpPost]
     [Route("IncluirConta")]
     [ProducesResponseType<ContaIncluirResponse>(StatusCodes.Status201Created)]
-    public IActionResult IncluirConta([FromBody] CompraIncluirRequest request)
+    public IActionResult IncluirConta([FromBody] ContaIncluirRequest request)
     {
 
         var result = _compraService.Incluir(request);

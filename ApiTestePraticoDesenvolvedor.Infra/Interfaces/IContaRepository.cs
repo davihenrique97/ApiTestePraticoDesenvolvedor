@@ -1,7 +1,7 @@
 ﻿using ApiTestePraticoDesenvolvedor.Domain.Dto;
 
 namespace ApiTestePraticoDesenvolvedor.Infra.Interfaces;
-public interface ICompraRepository
+public interface IContaRepository
 {
     public bool CadastrarConta(ContaDto contadto);
     public bool VerificaPagamento(DateTime dataPagamento);

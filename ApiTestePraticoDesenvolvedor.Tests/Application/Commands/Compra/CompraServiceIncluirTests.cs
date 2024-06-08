@@ -1,10 +1,10 @@
-﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Compra;
-using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Enum;
-using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Perfil;
+﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Conta;
+using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Enum;
+using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Perfil;
 using ApiTestePraticoDesenvolvedor.Domain.Dto;
 using ApiTestePraticoDesenvolvedor.Infra.Interfaces;
-using ApiTestePraticoDesenvolvedor.Tests.SharedKernel.Mock.Application.Commands.Compra.Requests;
-using ApiTestePraticoDesenvolvedor.Tests.SharedKernel.Mock.Application.Commands.Compra.Responses;
+using ApiTestePraticoDesenvolvedor.Tests.SharedKernel.Mock.Application.Commands.Conta.Requests;
+using ApiTestePraticoDesenvolvedor.Tests.SharedKernel.Mock.Application.Commands.Conta.Responses;
 using AutoMapper;
 using FluentAssertions;
 using Moq;
@@ -12,16 +12,16 @@ using Moq;
 namespace ApiTestePraticoDesenvolvedor.Tests.Application.Commands.Compra;
 public class CompraServiceIncluirTests
 {
-    private readonly Mock<ICompraRepository> _compraRepository;
+    private readonly Mock<IContaRepository> _contaRepository;
     private readonly IMapper _mapper;
 
     public CompraServiceIncluirTests()
     {
-        _compraRepository = new Mock<ICompraRepository>();
+        _contaRepository = new Mock<IContaRepository>();
 
         var config = new MapperConfiguration(opt =>
         {
-            opt.AddProfile(new CompraServiceProfile());
+            opt.AddProfile(new ContaServiceProfile());
         });
 
         _mapper = config.CreateMapper();
@@ -31,12 +31,12 @@ public class CompraServiceIncluirTests
     public void DeveIncluirPagamento()
     {
 
-        _compraRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(true);
-        _compraRepository.Setup(r => r.CadastrarConta(It.IsAny<ContaDto>())).Returns(true);
+        _contaRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(true);
+        _contaRepository.Setup(r => r.CadastrarConta(It.IsAny<ContaDto>())).Returns(true);
 
-        var compraService = new CompraService(_compraRepository.Object, _mapper);
+        var compraService = new ContaService(_contaRepository.Object, _mapper);
 
-        var result = compraService.Incluir(CompraIncluirRequestMock.GetMocked());
+        var result = compraService.Incluir(ContaIncluirRequestMock.GetMocked());
 
         result.Should().NotBeNull();
 
@@ -49,13 +49,13 @@ public class CompraServiceIncluirTests
     {
         var dataPagamento = DateTime.Now;
 
-        var esperado = CompraIncluirResponseMock.CompraIncluirResponsePagamentoJaExistente(dataPagamento);
-        var contaRequest = CompraIncluirRequestMock.GetMocked();
+        var esperado = ContaIncluirResponseMock.ContaIncluirResponsePagamentoJaExistente(dataPagamento);
+        var contaRequest = ContaIncluirRequestMock.GetMocked();
         contaRequest.DataPagamento = dataPagamento;
 
-        _compraRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(false);
+        _contaRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(false);
 
-        var compraService = new CompraService(_compraRepository.Object, _mapper);
+        var compraService = new ContaService(_contaRepository.Object, _mapper);
 
         var result = compraService.Incluir(contaRequest);
 
@@ -66,13 +66,13 @@ public class CompraServiceIncluirTests
     [Fact]
     public void DeveFalharAoIncluirContaNaoInclusa()
     {
-        var esperado = CompraIncluirResponseMock.CompraIncluirResponseFalha();
-        var contaRequest = CompraIncluirRequestMock.GetMocked();
+        var esperado = ContaIncluirResponseMock.ContaIncluirResponseFalha();
+        var contaRequest = ContaIncluirRequestMock.GetMocked();
 
-        _compraRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(true);
-        _compraRepository.Setup(r => r.CadastrarConta(It.IsAny<ContaDto>())).Returns(false);
+        _contaRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(true);
+        _contaRepository.Setup(r => r.CadastrarConta(It.IsAny<ContaDto>())).Returns(false);
 
-        var compraService = new CompraService(_compraRepository.Object, _mapper);
+        var compraService = new ContaService(_contaRepository.Object, _mapper);
 
         var result = compraService.Incluir(contaRequest);
 

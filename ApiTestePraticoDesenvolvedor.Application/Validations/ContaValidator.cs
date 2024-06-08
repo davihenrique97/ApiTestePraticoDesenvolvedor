@@ -1,8 +1,8 @@
-﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Responses;
+﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Requests;
 using FluentValidation;
 
 namespace ApiTestePraticoDesenvolvedor.Application.Validations;
-public class ContaValidator : AbstractValidator<CompraIncluirRequest>
+public class ContaValidator : AbstractValidator<ContaIncluirRequest>
 {
     public ContaValidator()
     {
