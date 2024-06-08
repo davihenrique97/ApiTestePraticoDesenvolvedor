@@ -13,7 +13,7 @@ public class CompraServiceProfile : Profile
             .ForMember(dto => dto.DataVencimento, opt => opt.MapFrom(r => r.DataVencimento))
             .ForMember(dto => dto.DataPagamento, opt => opt.MapFrom(r => r.DataPagamento));
 
-        CreateMap<ContaDto, CompraListagemResponse>()
+        CreateMap<ContaDto, ContaListagemResponse>()
             .ForMember(r => r.QuantidadeDiasDeAtraso, opt => opt.MapFrom(dto => dto.DiasAtrasados));
     }
 }

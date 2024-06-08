@@ -10,12 +10,12 @@ using FluentAssertions;
 using Moq;
 
 namespace ApiTestePraticoDesenvolvedor.Tests.Application.Commands.Compra;
-public class CompraServiceTests
+public class CompraServiceIncluirTests
 {
     private readonly Mock<ICompraRepository> _compraRepository;
     private readonly IMapper _mapper;
 
-    public CompraServiceTests()
+    public CompraServiceIncluirTests()
     {
         _compraRepository = new Mock<ICompraRepository>();
 

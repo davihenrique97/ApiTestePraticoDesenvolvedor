@@ -1,5 +1,5 @@
 ﻿namespace ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Responses;
-public class CompraListagemResponse
+public class ContaListagemResponse
 {
     public Guid Id { get; set; }
     public required string Nome { get; set; }

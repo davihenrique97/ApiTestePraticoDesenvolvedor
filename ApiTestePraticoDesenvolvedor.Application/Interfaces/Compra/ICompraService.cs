@@ -3,6 +3,6 @@
 namespace ApiTestePraticoDesenvolvedor.Application.Interfaces.Compra;
 public interface ICompraService
 {
-    CompraIncluirResponse Incluir(CompraIncluirRequest request);
-    IEnumerable<CompraListagemResponse> Listar(string? idConta);
+    ContaIncluirResponse Incluir(CompraIncluirRequest request);
+    IEnumerable<ContaListagemResponse> Listar(string? idConta);
 }

@@ -13,7 +13,7 @@ public class ContaController(ICompraService compraService) : ControllerBase
 
     [HttpPost]
     [Route("IncluirConta")]
-    [ProducesResponseType<CompraIncluirResponse>(StatusCodes.Status201Created)]
+    [ProducesResponseType<ContaIncluirResponse>(StatusCodes.Status201Created)]
     public IActionResult IncluirConta([FromBody] CompraIncluirRequest request)
     {
 
@@ -29,7 +29,7 @@ public class ContaController(ICompraService compraService) : ControllerBase
 
     [HttpGet]
     [Route("Consultar")]
-    [ProducesResponseType<CompraListagemResponse>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ContaListagemResponse>(StatusCodes.Status200OK)]
     public IActionResult Consultar([FromQuery] string? id)
     {
         var compras = _compraService.Listar(id);
