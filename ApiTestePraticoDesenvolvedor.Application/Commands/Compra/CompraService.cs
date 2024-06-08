@@ -11,14 +11,14 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
 {
     private readonly ICompraRepository _compraRepository = compraRepository;
     private readonly IMapper _mapper = mapper;
-    public CompraIncluirResponse Incluir(CompraIncluirRequest request)
+    public ContaIncluirResponse Incluir(CompraIncluirRequest request)
     {
         var pagamentoValido = _compraRepository
             .VerificaPagamento(request.DataPagamento);
 
         if (!pagamentoValido)
         {
-            return new CompraIncluirResponse
+            return new ContaIncluirResponse
             {
                 Status = StatusConta.ProblemaAoIncluir,
                 Menssagens = ["Problema ao Incluir a Conta.",
@@ -34,7 +34,7 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
 
         if (!result)
         {
-            return new CompraIncluirResponse
+            return new ContaIncluirResponse
             {
                 Status = StatusConta.ProblemaAoIncluir,
                 Menssagens = ["Problema ao Incluir a Conta.",
@@ -42,14 +42,14 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
             };
         }
 
-        return new CompraIncluirResponse
+        return new ContaIncluirResponse
         {
             Status = StatusConta.ContaIncluida,
             Menssagens = ["Conta Incluída Com Sucesso."]
         };
     }
 
-    public IEnumerable<CompraListagemResponse> Listar(string? idConta)
+    public IEnumerable<ContaListagemResponse> Listar(string? idConta)
     {
         IList<ContaDto> contas = new List<ContaDto>();
 
@@ -70,6 +70,6 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
             contas = _mapper.Map<IList<ContaDto>>(resultadoContas);
         }
 
-        return _mapper.Map<IEnumerable<CompraListagemResponse>>(contas);
+        return _mapper.Map<IEnumerable<ContaListagemResponse>>(contas);
     }
 }
