@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ApiTestePraticoDesenvolvedor.Application\ApiTestePraticoDesenvolvedor.Application.csproj" />
     <ProjectReference Include="..\ApiTestePraticoDesenvolvedor.Tests.SharedKernel\ApiTestePraticoDesenvolvedor.Tests.SharedKernel.csproj" />
+    <ProjectReference Include="..\ApiTestePraticoDesenvolvedor\ApiTestePraticoDesenvolvedor.Api.csproj" />
   </ItemGroup>
 
   <ItemGroup>

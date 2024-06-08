@@ -5,7 +5,7 @@ using ApiTestePraticoDesenvolvedor.Infra.Interfaces;
 using AutoMapper;
 
 namespace ApiTestePraticoDesenvolvedor.Infra.Repositories;
-public class CompraRepository(Context context, IMapper mapper) : ICompraRepository
+public class CompraRepository(Context context, IMapper mapper) : IContaRepository
 {
     private readonly Context _context = context;
     private readonly IMapper _mapper = mapper;

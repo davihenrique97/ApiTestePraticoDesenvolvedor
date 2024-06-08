@@ -1,6 +1,6 @@
-﻿namespace ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Responses;
+﻿namespace ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Requests;
 
-public class CompraIncluirRequest
+public class ContaIncluirRequest
 {
     public string? Nome { get; set; }
     public double? ValorOriginal { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
-using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Enum;
+using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Enum;
 
-namespace ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Responses;
+namespace ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Responses;
 public class ContaIncluirResponse
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]

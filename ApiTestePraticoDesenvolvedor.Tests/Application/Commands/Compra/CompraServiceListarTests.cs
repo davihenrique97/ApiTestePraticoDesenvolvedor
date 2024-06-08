@@ -1,6 +1,6 @@
-﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Compra;
-using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Perfil;
-using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Responses;
+﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Conta;
+using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Perfil;
+using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Responses;
 using ApiTestePraticoDesenvolvedor.Infra.Interfaces;
 using ApiTestePraticoDesenvolvedor.Tests.SharedKernel.Mock.Domain.Dto;
 using AutoMapper;
@@ -10,16 +10,16 @@ using Moq;
 namespace ApiTestePraticoDesenvolvedor.Tests.Application.Commands.Compra;
 public class CompraServiceListarTests
 {
-    private readonly Mock<ICompraRepository> _compraRepository;
+    private readonly Mock<IContaRepository> _compraRepository;
     private readonly IMapper _mapper;
 
     public CompraServiceListarTests()
     {
-        _compraRepository = new Mock<ICompraRepository>();
+        _compraRepository = new Mock<IContaRepository>();
 
         var config = new MapperConfiguration(opt =>
         {
-            opt.AddProfile(new CompraServiceProfile());
+            opt.AddProfile(new ContaServiceProfile());
         });
 
         _mapper = config.CreateMapper();
@@ -33,7 +33,7 @@ public class CompraServiceListarTests
         var esperado = _mapper.Map<IEnumerable<ContaListagemResponse>>(retorno);
 
         _compraRepository.Setup(r => r.ListaContasCadastradas()).Returns(retorno);
-        var compraService = new CompraService(_compraRepository.Object, _mapper);
+        var compraService = new ContaService(_compraRepository.Object, _mapper);
 
         var result = compraService.Listar(null);
 

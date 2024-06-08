@@ -1,4 +1,4 @@
-﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Perfil;
+﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Perfil;
 using ApiTestePraticoDesenvolvedor.Application.Validations;
 using ApiTestePraticoDesenvolvedor.Infra.DatabaseContext;
 using ApiTestePraticoDesenvolvedor.Infra.Perfil;
@@ -54,7 +54,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<ContaValidator>();
 
 // AutoMapper
 builder.Services.AddAutoMapper(
-    typeof(CompraServiceProfile),
+    typeof(ContaServiceProfile),
     typeof(CompraRepositoryProfile)
 );
 
