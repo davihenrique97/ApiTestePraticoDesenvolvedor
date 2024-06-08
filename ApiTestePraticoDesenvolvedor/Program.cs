@@ -55,7 +55,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<ContaValidator>();
 // AutoMapper
 builder.Services.AddAutoMapper(
     typeof(ContaServiceProfile),
-    typeof(CompraRepositoryProfile)
+    typeof(ContaRepositoryProfile)
 );
 
 var app = builder.Build();

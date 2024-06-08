@@ -3,9 +3,9 @@ using ApiTestePraticoDesenvolvedor.Domain.Entities;
 using AutoMapper;
 
 namespace ApiTestePraticoDesenvolvedor.Infra.Perfil;
-public class CompraRepositoryProfile : Profile
+public class ContaRepositoryProfile : Profile
 {
-    public CompraRepositoryProfile()
+    public ContaRepositoryProfile()
     {
         CreateMap<ContaDto, ContaEntity>()
             .ForMember(e => e.IdConta, opt => opt.MapFrom(e => Guid.NewGuid()));
