@@ -10,9 +10,28 @@ public class Context(DbContextOptions<Context> options) : DbContext(options)
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ContaEntity>(c => c.ToTable("ContaDatabase")
+        modelBuilder.Entity<ContaEntity>(c => c.ToTable("CONTA_DATABASE")
         .HasKey(c => c.IdConta));
 
-        // #TODO  DAR NOMES AOS CAMPOS
+        modelBuilder.Entity<ContaEntity>().Property(c => c.IdConta)
+            .HasColumnName("ID_CONTA");
+
+        modelBuilder.Entity<ContaEntity>().Property(c => c.Nome)
+            .HasColumnName("NOME_CONTA");
+
+        modelBuilder.Entity<ContaEntity>().Property(c => c.ValorOriginal)
+            .HasColumnName("VALOR_ORIGINAL_CONTA");
+
+        modelBuilder.Entity<ContaEntity>().Property(c => c.ValorCorrigido)
+            .HasColumnName("VALOR_CORRIGIDO_CONTA");
+
+        modelBuilder.Entity<ContaEntity>().Property(c => c.DataVencimento)
+            .HasColumnName("DATA_VENCIMENTO_CONTA");
+
+        modelBuilder.Entity<ContaEntity>().Property(c => c.DataPagamento)
+            .HasColumnName("DATA_PAGAMENTO_CONTA");
+
+        modelBuilder.Entity<ContaEntity>().Property(c => c.DiasAtrasados)
+            .HasColumnName("DIAS_ATRASADOS_CONTA");
     }
 }
