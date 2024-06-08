@@ -31,8 +31,8 @@ public class CompraServiceTests
     public void DeveIncluirPagamento()
     {
 
-        _compraRepository.Setup(r => r.CadastrarConta(It.IsAny<ContaDto>())).Returns(true);
         _compraRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(true);
+        _compraRepository.Setup(r => r.CadastrarConta(It.IsAny<ContaDto>())).Returns(true);
 
         var compraService = new CompraService(_compraRepository.Object, _mapper);
 
@@ -49,11 +49,28 @@ public class CompraServiceTests
     {
         var dataPagamento = DateTime.Now;
 
-        var esperado = CompraIncluirResponseMock.PagamentoJaExistente(dataPagamento);
+        var esperado = CompraIncluirResponseMock.CompraIncluirResponsePagamentoJaExistente(dataPagamento);
         var contaRequest = CompraIncluirRequestMock.GetMocked();
         contaRequest.DataPagamento = dataPagamento;
 
         _compraRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(false);
+
+        var compraService = new CompraService(_compraRepository.Object, _mapper);
+
+        var result = compraService.Incluir(contaRequest);
+
+        result.Should().NotBeNull();
+        result.Should().BeEquivalentTo(esperado);
+    }
+
+    [Fact]
+    public void DeveFalharAoIncluirContaNaoInclusa()
+    {
+        var esperado = CompraIncluirResponseMock.CompraIncluirResponseFalha();
+        var contaRequest = CompraIncluirRequestMock.GetMocked();
+
+        _compraRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(true);
+        _compraRepository.Setup(r => r.CadastrarConta(It.IsAny<ContaDto>())).Returns(false);
 
         var compraService = new CompraService(_compraRepository.Object, _mapper);
 

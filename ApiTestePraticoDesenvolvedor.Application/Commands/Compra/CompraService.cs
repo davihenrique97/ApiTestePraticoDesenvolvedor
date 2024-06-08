@@ -37,7 +37,8 @@ public class CompraService(ICompraRepository compraRepository, IMapper mapper) :
             return new CompraIncluirResponse
             {
                 Status = StatusConta.ProblemaAoIncluir,
-                Menssagens = ["Problema ao Incluir a Conta.", "Conta não Inclusa!"]
+                Menssagens = ["Problema ao Incluir a Conta.",
+                              "Conta não Inclusa!"]
             };
         }
 
