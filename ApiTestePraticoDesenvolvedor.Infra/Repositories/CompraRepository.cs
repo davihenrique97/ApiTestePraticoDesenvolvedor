@@ -23,7 +23,7 @@ public class CompraRepository(Context context, IMapper mapper) : ICompraReposito
     public bool VerificaPagamento(DateTime dataPagamento)
     {
         var result = _context.Conta
-            .All(c => c.DataPagamento.Date != dataPagamento.Date);
+            .All(c => c.DataPagamento != dataPagamento);
 
         return result;
     }

@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Scrutor" Version="4.2.2" />
     <PackageReference Include="SonarAnalyzer.CSharp" Version="9.26.0.92422">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -18,7 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ApiTestePraticoDesenvolvedor.Infra\ApiTestePraticoDesenvolvedor.Infra.csproj" />
+    <ProjectReference Include="..\ApiTestePraticoDesenvolvedor.Application\ApiTestePraticoDesenvolvedor.Application.csproj" />
+    <ProjectReference Include="..\ApiTestePraticoDesenvolvedor.Domain\ApiTestePraticoDesenvolvedor.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -12,14 +12,14 @@ public class ContaController(ICompraService compraService) : ControllerBase
     private readonly ICompraService _compraService = compraService;
 
     [HttpPost]
-    [Route("Pagar")]
+    [Route("IncluirConta")]
     [ProducesResponseType<CompraIncluirResponse>(StatusCodes.Status201Created)]
-    public IActionResult PagarConta([FromBody] CompraIncluirRequest request)
+    public IActionResult IncluirConta([FromBody] CompraIncluirRequest request)
     {
 
         var result = _compraService.Incluir(request);
 
-        if (result.Status != StatusConta.Pago)
+        if (result.Status != StatusConta.ContaIncluida)
         {
             return UnprocessableEntity(result);
         }
