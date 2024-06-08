@@ -3,7 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTestePraticoDesenvolvedor", "ApiTestePraticoDesenvolvedor\ApiTestePraticoDesenvolvedor.csproj", "{E48D907E-BAE2-4210-B2B7-B0601CFA3488}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTestePraticoDesenvolvedor.Api", "ApiTestePraticoDesenvolvedor\ApiTestePraticoDesenvolvedor.Api.csproj", "{E48D907E-BAE2-4210-B2B7-B0601CFA3488}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D38B9467-786A-47E1-ACE5-DBA29C30DAEC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - API", "1 - API", "{C0A8FC9F-12D1-4555-BBAB-7BE57A94FF47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{9A8B30F2-A17C-4395-BDCF-1F48D609D7D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{68FA5615-94C4-4D32-AB7C-334A507F62F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{027976E3-6710-447F-964B-6CC63C8AD5FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Tests", "5 - Tests", "{C1DFDC46-E32B-4E62-809A-88F173F7CDAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTestePraticoDesenvolvedor.Application", "ApiTestePraticoDesenvolvedor.Application\ApiTestePraticoDesenvolvedor.Application.csproj", "{6DC4DCDB-A0E8-48D8-927F-D3FC711C3738}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTestePraticoDesenvolvedor.Domain", "ApiTestePraticoDesenvolvedor.Domain\ApiTestePraticoDesenvolvedor.Domain.csproj", "{4A8E76CE-53DF-4930-89AE-4779AA739915}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTestePraticoDesenvolvedor.Infra", "ApiTestePraticoDesenvolvedor.Infra\ApiTestePraticoDesenvolvedor.Infra.csproj", "{AEE9B224-23AA-4CFE-8400-0351126F25DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +36,27 @@ Global
 		{E48D907E-BAE2-4210-B2B7-B0601CFA3488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E48D907E-BAE2-4210-B2B7-B0601CFA3488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E48D907E-BAE2-4210-B2B7-B0601CFA3488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC4DCDB-A0E8-48D8-927F-D3FC711C3738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC4DCDB-A0E8-48D8-927F-D3FC711C3738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC4DCDB-A0E8-48D8-927F-D3FC711C3738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC4DCDB-A0E8-48D8-927F-D3FC711C3738}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A8E76CE-53DF-4930-89AE-4779AA739915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A8E76CE-53DF-4930-89AE-4779AA739915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A8E76CE-53DF-4930-89AE-4779AA739915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A8E76CE-53DF-4930-89AE-4779AA739915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEE9B224-23AA-4CFE-8400-0351126F25DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE9B224-23AA-4CFE-8400-0351126F25DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE9B224-23AA-4CFE-8400-0351126F25DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE9B224-23AA-4CFE-8400-0351126F25DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E48D907E-BAE2-4210-B2B7-B0601CFA3488} = {C0A8FC9F-12D1-4555-BBAB-7BE57A94FF47}
+		{6DC4DCDB-A0E8-48D8-927F-D3FC711C3738} = {9A8B30F2-A17C-4395-BDCF-1F48D609D7D9}
+		{4A8E76CE-53DF-4930-89AE-4779AA739915} = {027976E3-6710-447F-964B-6CC63C8AD5FF}
+		{AEE9B224-23AA-4CFE-8400-0351126F25DB} = {68FA5615-94C4-4D32-AB7C-334A507F62F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16967580-F566-40F1-B63E-21790B960179}
