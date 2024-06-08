@@ -4,9 +4,9 @@ using ApiTestePraticoDesenvolvedor.Application.Commands.Compra.Responses;
 namespace ApiTestePraticoDesenvolvedor.Tests.SharedKernel.Mock.Application.Commands.Compra.Responses;
 public static class CompraIncluirResponseMock
 {
-    public static CompraIncluirResponse CompraIncluirResponsePagamentoJaExistente(DateTime data)
+    public static ContaIncluirResponse CompraIncluirResponsePagamentoJaExistente(DateTime data)
     {
-        return new CompraIncluirResponse
+        return new ContaIncluirResponse
         {
             Status = StatusConta.ProblemaAoIncluir,
             Menssagens = ["Problema ao Incluir a Conta.",
@@ -14,9 +14,9 @@ public static class CompraIncluirResponseMock
         };
     }
 
-    public static CompraIncluirResponse CompraIncluirResponseFalha()
+    public static ContaIncluirResponse CompraIncluirResponseFalha()
     {
-        return new CompraIncluirResponse
+        return new ContaIncluirResponse
         {
             Status = StatusConta.ProblemaAoIncluir,
             Menssagens = ["Problema ao Incluir a Conta.",
