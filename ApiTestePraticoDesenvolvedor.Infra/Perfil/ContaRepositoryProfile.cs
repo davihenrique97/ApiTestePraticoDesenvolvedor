@@ -1,8 +1,11 @@
-﻿using ApiTestePraticoDesenvolvedor.Domain.Dto;
+﻿using System.Diagnostics.CodeAnalysis;
+using ApiTestePraticoDesenvolvedor.Domain.Dto;
 using ApiTestePraticoDesenvolvedor.Domain.Entities;
 using AutoMapper;
 
 namespace ApiTestePraticoDesenvolvedor.Infra.Perfil;
+
+[ExcludeFromCodeCoverage]
 public class ContaRepositoryProfile : Profile
 {
     public ContaRepositoryProfile()

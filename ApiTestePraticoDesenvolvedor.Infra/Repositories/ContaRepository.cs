@@ -1,10 +1,13 @@
-﻿using ApiTestePraticoDesenvolvedor.Domain.Dto;
+﻿using System.Diagnostics.CodeAnalysis;
+using ApiTestePraticoDesenvolvedor.Domain.Dto;
 using ApiTestePraticoDesenvolvedor.Domain.Entities;
 using ApiTestePraticoDesenvolvedor.Infra.DatabaseContext;
 using ApiTestePraticoDesenvolvedor.Infra.Interfaces;
 using AutoMapper;
 
 namespace ApiTestePraticoDesenvolvedor.Infra.Repositories;
+
+[ExcludeFromCodeCoverage]
 public class ContaRepository(Context context, IMapper mapper) : IContaRepository
 {
     private readonly Context _context = context;
