@@ -9,13 +9,13 @@ using AutoMapper;
 using FluentAssertions;
 using Moq;
 
-namespace ApiTestePraticoDesenvolvedor.Tests.Application.Commands.Compra;
-public class CompraServiceIncluirTests
+namespace ApiTestePraticoDesenvolvedor.Tests.Application.Commands.Conta;
+public class ContaServiceIncluirTests
 {
     private readonly Mock<IContaRepository> _contaRepository;
     private readonly IMapper _mapper;
 
-    public CompraServiceIncluirTests()
+    public ContaServiceIncluirTests()
     {
         _contaRepository = new Mock<IContaRepository>();
 

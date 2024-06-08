@@ -1,8 +1,9 @@
-﻿using ApiTestePraticoDesenvolvedor.Domain.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
+using ApiTestePraticoDesenvolvedor.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiTestePraticoDesenvolvedor.Infra.DatabaseContext;
-
+[ExcludeFromCodeCoverage]
 public class Context(DbContextOptions<Context> options) : DbContext(options)
 {
 

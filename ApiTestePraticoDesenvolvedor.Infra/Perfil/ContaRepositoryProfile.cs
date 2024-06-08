@@ -1,11 +1,14 @@
-﻿using ApiTestePraticoDesenvolvedor.Domain.Dto;
+﻿using System.Diagnostics.CodeAnalysis;
+using ApiTestePraticoDesenvolvedor.Domain.Dto;
 using ApiTestePraticoDesenvolvedor.Domain.Entities;
 using AutoMapper;
 
 namespace ApiTestePraticoDesenvolvedor.Infra.Perfil;
-public class CompraRepositoryProfile : Profile
+
+[ExcludeFromCodeCoverage]
+public class ContaRepositoryProfile : Profile
 {
-    public CompraRepositoryProfile()
+    public ContaRepositoryProfile()
     {
         CreateMap<ContaDto, ContaEntity>()
             .ForMember(e => e.IdConta, opt => opt.MapFrom(e => Guid.NewGuid()));

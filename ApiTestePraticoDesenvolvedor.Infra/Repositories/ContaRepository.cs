@@ -1,11 +1,14 @@
-﻿using ApiTestePraticoDesenvolvedor.Domain.Dto;
+﻿using System.Diagnostics.CodeAnalysis;
+using ApiTestePraticoDesenvolvedor.Domain.Dto;
 using ApiTestePraticoDesenvolvedor.Domain.Entities;
 using ApiTestePraticoDesenvolvedor.Infra.DatabaseContext;
 using ApiTestePraticoDesenvolvedor.Infra.Interfaces;
 using AutoMapper;
 
 namespace ApiTestePraticoDesenvolvedor.Infra.Repositories;
-public class CompraRepository(Context context, IMapper mapper) : IContaRepository
+
+[ExcludeFromCodeCoverage]
+public class ContaRepository(Context context, IMapper mapper) : IContaRepository
 {
     private readonly Context _context = context;
     private readonly IMapper _mapper = mapper;
