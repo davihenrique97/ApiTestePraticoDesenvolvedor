@@ -25,6 +25,8 @@ public class ContaController(ICompraService compraService) : ControllerBase
         }
 
         return Ok(result);
+
+        // #TODO testes
     }
 
     [HttpGet]
