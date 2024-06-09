@@ -1,47 +1,87 @@
-﻿using ApiTestePraticoDesenvolvedor.Domain.Dto;
+﻿using ApiTestePraticoDesenvolvedor.Application.Extensions.Dto;
+using ApiTestePraticoDesenvolvedor.Domain.Dto;
 
 namespace ApiTestePraticoDesenvolvedor.Application.Extensions;
 public static class CalculoMulta
 {
-    private static double CalcularMulta(ContaDto contaDto, int diasCorridos)
+    private static CorrecaoDto CalcularMulta(ContaDto contaDto, int diasCorridos)
     {
+        double multa = 0;
         if (diasCorridos == 0)
         {
-            return 0;
+            return new CorrecaoDto
+            {
+                Valor = multa
+            };
         }
 
         if (diasCorridos <= 3)
         {
-            return contaDto.ValorOriginal * 0.02;
+            multa = contaDto.ValorOriginal * 0.02;
+            return new CorrecaoDto
+            {
+                Valor = multa,
+                Messagem = $"Multa 2%: R$ {multa}."
+            };
         }
 
         if (diasCorridos <= 10)
         {
-            return contaDto.ValorOriginal * 0.03;
+            multa = contaDto.ValorOriginal * 0.03;
+            return new CorrecaoDto
+            {
+                Valor = multa,
+                Messagem = $"Multa 3%: R$ {multa}."
+            };
         }
 
-        return contaDto.ValorOriginal * 0.05;
+        multa = contaDto.ValorOriginal * 0.05;
+        return new CorrecaoDto
+        {
+            Valor = multa,
+            Messagem = $"Multa 5%: R$ {multa}."
+        };
+
     }
 
-    private static double CalcularJuros(ContaDto contaDto, int diasCorridos)
+    private static CorrecaoDto CalcularJuros(ContaDto contaDto, int diasCorridos)
     {
+        double juros = 0;
         if (diasCorridos == 0)
         {
-            return 0;
+            return new CorrecaoDto
+            {
+                Valor = juros
+            };
         }
 
         if (diasCorridos <= 3)
         {
-            return contaDto.ValorOriginal * 0.01 * diasCorridos;
+            juros = contaDto.ValorOriginal * 0.01 * diasCorridos;
+            return new CorrecaoDto
+            {
+                Valor = juros,
+                Messagem = $"Juros/dia 0,1%: R$ {juros}."
+            };
+
         }
 
         if (diasCorridos <= 10)
         {
-            return contaDto.ValorOriginal * 0.02 * diasCorridos;
+            juros = contaDto.ValorOriginal * 0.02 * diasCorridos;
+            return new CorrecaoDto
+            {
+                Valor = juros,
+                Messagem = $"Juros/dia 0,2%: R$ {juros}."
+            };
         }
 
-        return contaDto.ValorOriginal * 0.05 * diasCorridos;
-
+        juros = contaDto.ValorOriginal * 0.05 * diasCorridos;
+        return new CorrecaoDto
+        {
+            Valor = juros,
+            Messagem = $"Juros/dia 0.5%: R$ {juros}."
+        };
     }
 
     public static ContaDto CalcularMultaEJuros(this ContaDto contaDto)
@@ -53,17 +93,18 @@ public static class CalculoMulta
         if (diasCorridos <= NENHUM_DIA_EM_ATRASSO)
         {
             contaDto.DiasAtrasados = NENHUM_DIA_EM_ATRASSO;
+            contaDto.RegraCalculo = string.Empty;
             contaDto.ValorCorrigido = contaDto.ValorOriginal;
             return contaDto;
         }
 
-        contaDto.DiasAtrasados = diasCorridos;
-
         var multa = CalcularMulta(contaDto, diasCorridos);
         var juros = CalcularJuros(contaDto, diasCorridos);
 
-        var multaEjuros = multa + juros;
+        var multaEjuros = multa.Valor + juros.Valor;
 
+        contaDto.DiasAtrasados = diasCorridos;
+        contaDto.RegraCalculo = multa.Messagem + " " + juros.Messagem;
         contaDto.ValorCorrigido = contaDto.ValorOriginal + multaEjuros;
 
         return contaDto;

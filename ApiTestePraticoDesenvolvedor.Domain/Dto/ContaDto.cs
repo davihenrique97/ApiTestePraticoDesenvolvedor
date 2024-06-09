@@ -8,4 +8,5 @@ public class ContaDto
     public DateTime DataVencimento { get; set; }
     public DateTime DataPagamento { get; set; }
     public int DiasAtrasados { get; set; }
+    public string? RegraCalculo { get; set; }
 }

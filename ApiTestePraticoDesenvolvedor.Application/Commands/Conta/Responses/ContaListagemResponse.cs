@@ -7,4 +7,5 @@ public class ContaListagemResponse
     public double ValorCorrigido { get; set; }
     public int QuantidadeDiasDeAtraso { get; set; }
     public DateTime DataPagamento { get; set; }
+    public required string RegraCalculo { get; set; }
 }

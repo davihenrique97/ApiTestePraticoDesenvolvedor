@@ -13,14 +13,14 @@ public class ContaRepository(Context context, IMapper mapper) : IContaRepository
     private readonly Context _context = context;
     private readonly IMapper _mapper = mapper;
 
-    public bool CadastrarConta(ContaDto contadto)
+    public Guid CadastrarConta(ContaDto contadto)
     {
         var conta = _mapper.Map<ContaEntity>(contadto);
 
         _context.Conta.Add(conta);
         _context.SaveChanges();
 
-        return true;
+        return conta.IdConta;
     }
 
     public bool VerificaPagamento(DateTime dataPagamento)

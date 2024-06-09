@@ -9,4 +9,5 @@ public class ContaEntity
     public DateTime DataVencimento { get; set; }
     public DateTime DataPagamento { get; set; }
     public int DiasAtrasados { get; set; }
+    public required string RegraCalculo { get; set; }
 }

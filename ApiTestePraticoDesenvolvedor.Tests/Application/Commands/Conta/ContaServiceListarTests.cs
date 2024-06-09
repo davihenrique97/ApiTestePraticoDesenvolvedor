@@ -1,6 +1,7 @@
 ﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Conta;
 using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Perfil;
 using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Responses;
+using ApiTestePraticoDesenvolvedor.Domain.Dto;
 using ApiTestePraticoDesenvolvedor.Infra.Interfaces;
 using ApiTestePraticoDesenvolvedor.Tests.SharedKernel.Mock.Domain.Dto;
 using AutoMapper;
@@ -39,5 +40,22 @@ public class ContaServiceListarTests
 
         result.Should().NotBeNull();
         result.Should().BeEquivalentTo(esperado);
+    }
+
+    [Fact]
+    public void DevePesquisarUmaConta()
+    {
+        var id = Guid.NewGuid().ToString();
+        var retorno = ContaDtoMock.Conta();
+
+        var esperado = _mapper.Map<IEnumerable<ContaListagemResponse>>(new List<ContaDto> { retorno });
+
+        _compraRepository.Setup(r => r.PesquisarConta(It.IsAny<Guid>())).Returns(retorno);
+        var compraService = new ContaService(_compraRepository.Object, _mapper);
+
+        var result = compraService.Listar(id);
+
+        result.Should().NotBeNull();
+        result.FirstOrDefault().Should().BeEquivalentTo(esperado.FirstOrDefault());
     }
 }

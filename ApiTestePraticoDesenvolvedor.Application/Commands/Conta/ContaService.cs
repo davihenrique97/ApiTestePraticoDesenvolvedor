@@ -6,6 +6,7 @@ using ApiTestePraticoDesenvolvedor.Application.Interfaces.Conta;
 using ApiTestePraticoDesenvolvedor.Domain.Dto;
 using ApiTestePraticoDesenvolvedor.Infra.Interfaces;
 using AutoMapper;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ApiTestePraticoDesenvolvedor.Application.Commands.Conta;
 public class ContaService(IContaRepository contaRepository, IMapper mapper) : IContaService
@@ -33,7 +34,7 @@ public class ContaService(IContaRepository contaRepository, IMapper mapper) : IC
 
         var result = _contaRepository.CadastrarConta(contaDto);
 
-        if (!result)
+        if (result == Guid.Empty)
         {
             return new ContaIncluirResponse
             {
@@ -46,24 +47,25 @@ public class ContaService(IContaRepository contaRepository, IMapper mapper) : IC
         return new ContaIncluirResponse
         {
             Status = StatusConta.ContaIncluida,
+            Id = result,
             Menssagens = ["Conta Incluída Com Sucesso."]
         };
     }
 
     public IEnumerable<ContaListagemResponse> Listar(string? idConta)
     {
-        IList<ContaDto> contas = new List<ContaDto>();
+        IList<ContaDto> contas = [];
 
-        if (!string.IsNullOrEmpty(idConta))
+        if (!idConta.IsNullOrEmpty())
         {
-            var idContaGuid = new Guid(idConta);
-
-            var resultadoconta = _contaRepository.PesquisarConta(idContaGuid);
-            if (resultadoconta != null)
+            if (Guid.TryParse(idConta, out var idContaGuid))
             {
-                contas.Add(resultadoconta);
+                var resultadoconta = _contaRepository.PesquisarConta(idContaGuid);
+                if (resultadoconta != null)
+                {
+                    contas.Add(resultadoconta);
+                }
             }
-
         }
         else
         {

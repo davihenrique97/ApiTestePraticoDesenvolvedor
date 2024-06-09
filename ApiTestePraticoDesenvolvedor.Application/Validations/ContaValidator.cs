@@ -1,7 +1,10 @@
-﻿using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Requests;
+﻿using System.Diagnostics.CodeAnalysis;
+using ApiTestePraticoDesenvolvedor.Application.Commands.Conta.Requests;
 using FluentValidation;
 
 namespace ApiTestePraticoDesenvolvedor.Application.Validations;
+
+[ExcludeFromCodeCoverage]
 public class ContaValidator : AbstractValidator<ContaIncluirRequest>
 {
     public ContaValidator()
@@ -19,9 +22,10 @@ public class ContaValidator : AbstractValidator<ContaIncluirRequest>
             .NotNull()
             .WithMessage("Campo Valor Original Não Pode Ser Nulo.");
 
-        RuleFor(c => c.ValorOriginal)
-            .Must(c => c > 0)
-            .WithMessage("Campo Valor Original Inválido.");
+        When(c => c.ValorOriginal is not null, () =>
+        {
+            RuleFor(c => c.ValorOriginal > 0).NotEmpty().WithMessage("Campo Valor Original Inválido.");
+        });
 
         RuleFor(c => c.DataVencimento)
             .NotEmpty()

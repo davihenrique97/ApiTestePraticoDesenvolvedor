@@ -27,4 +27,18 @@ public static class ContaDtoMock
         }
         ];
     }
+
+    public static ContaDto Conta()
+    {
+        return new ContaDto
+        {
+            Id = Guid.NewGuid(),
+            Nome = "Conta de Água",
+            DataPagamento = DateTime.Now,
+            DataVencimento = DateTime.Now,
+            ValorOriginal = 150,
+            ValorCorrigido = 150,
+            DiasAtrasados = 0
+        };
+    }
 }
