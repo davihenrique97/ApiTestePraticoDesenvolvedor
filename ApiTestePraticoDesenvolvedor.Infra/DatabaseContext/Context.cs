@@ -34,5 +34,8 @@ public class Context(DbContextOptions<Context> options) : DbContext(options)
 
         modelBuilder.Entity<ContaEntity>().Property(c => c.DiasAtrasados)
             .HasColumnName("DIAS_ATRASADOS_CONTA");
+
+        modelBuilder.Entity<ContaEntity>().Property(c => c.RegraCalculo)
+            .HasColumnName("REGRA_CALCULO_CONTA");
     }
 }
