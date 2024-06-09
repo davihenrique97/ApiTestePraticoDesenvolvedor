@@ -8,9 +8,9 @@ namespace ApiTestePraticoDesenvolvedor.Api.Controllers;
 
 [ApiController]
 [Route("/")]
-public class ContaController(IContaService compraService) : ControllerBase
+public class ContaController(IContaService contaService) : ControllerBase
 {
-    private readonly IContaService _compraService = compraService;
+    private readonly IContaService _compraService = contaService;
 
     [HttpPost]
     [Route("IncluirConta")]

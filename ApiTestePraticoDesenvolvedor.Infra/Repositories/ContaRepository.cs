@@ -17,15 +17,9 @@ public class ContaRepository(Context context, IMapper mapper) : IContaRepository
     {
         var conta = _mapper.Map<ContaEntity>(contadto);
 
-        try
-        {
-            _context.Conta.Add(conta);
-            _context.SaveChanges();
-        }
-        catch
-        {
-            return Guid.Empty;
-        }
+        _context.Conta.Add(conta);
+        _context.SaveChanges();
+
         return conta.IdConta;
     }
 
