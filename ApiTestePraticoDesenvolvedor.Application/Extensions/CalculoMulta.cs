@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using ApiTestePraticoDesenvolvedor.Application.Extensions.Dto;
+﻿using ApiTestePraticoDesenvolvedor.Application.Extensions.Dto;
 using ApiTestePraticoDesenvolvedor.Domain.Dto;
 
 namespace ApiTestePraticoDesenvolvedor.Application.Extensions;
@@ -106,7 +105,6 @@ public static class CalculoMulta
 
         contaDto.DiasAtrasados = diasCorridos;
         contaDto.RegraCalculo = multa.Messagem + " " + juros.Messagem;
-        contaDto.RegraCalculo = Regex.Replace(contaDto.RegraCalculo, @"\s+", " ");
         contaDto.ValorCorrigido = contaDto.ValorOriginal + multaEjuros;
 
         return contaDto;
