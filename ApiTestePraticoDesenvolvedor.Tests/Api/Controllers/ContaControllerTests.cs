@@ -55,7 +55,8 @@ public class ContaControllerTests
             DataPagamento = DateTime.Now,
             ValorOriginal = 250,
             ValorCorrigido = 250,
-            QuantidadeDiasDeAtraso = 0
+            QuantidadeDiasDeAtraso = 0,
+            RegraCalculo = string.Empty
         },
         new ContaListagemResponse
         {
@@ -64,7 +65,8 @@ public class ContaControllerTests
             DataPagamento = DateTime.Now,
             ValorOriginal = 150,
             ValorCorrigido = 150,
-            QuantidadeDiasDeAtraso = 0
+            QuantidadeDiasDeAtraso = 0,
+            RegraCalculo = string.Empty
         }
         };
 
