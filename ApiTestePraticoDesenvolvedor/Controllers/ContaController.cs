@@ -37,9 +37,11 @@ public class ContaController(IContaService compraService) : ControllerBase
 
         if (!compras.Any())
         {
-            return UnprocessableEntity("Nenhuma Conta Encontrada");
+            return UnprocessableEntity(new ContaListagemErrorResponse
+            {
+                Menssagens = ["Nenhuma Conta Encontrada"]
+            });
         }
-
         return Ok(compras);
     }
 }
