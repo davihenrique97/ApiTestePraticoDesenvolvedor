@@ -41,7 +41,7 @@ public class ContaServiceIncluirTests
         result.Should().NotBeNull();
 
         result.Status.Should().Be(StatusConta.ContaIncluida);
-        result.Menssagens.First().Should().BeEquivalentTo("Conta Incluída Com Sucesso.");
+        result.Mensagens.First().Should().BeEquivalentTo("Conta Incluída Com Sucesso.");
     }
 
     [Fact(DisplayName = "Deve Falhar ao Incluir Conta Ja Existente")]

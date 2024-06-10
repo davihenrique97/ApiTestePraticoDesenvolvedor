@@ -10,5 +10,5 @@ public class ContaIncluirResponse
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public StatusConta Status { get; set; }
 
-    public required IEnumerable<string> Menssagens { get; set; }
+    public required IEnumerable<string> Mensagens { get; set; }
 }
