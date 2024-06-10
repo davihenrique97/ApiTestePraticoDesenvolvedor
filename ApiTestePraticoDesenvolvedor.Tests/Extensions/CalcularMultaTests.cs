@@ -5,7 +5,7 @@ using FluentAssertions;
 namespace ApiTestePraticoDesenvolvedor.Tests.EcontaDtotensions;
 public class CalcularMultaTests
 {
-    [Fact]
+    [Fact(DisplayName = "Deve Retornar Sem Multas e Juros")]
     public void DeveRetonarSemMultasEjuros()
     {
         var dataAtual = DateTime.Now;
@@ -24,11 +24,11 @@ public class CalcularMultaTests
 
     }
 
-    [Theory]
+    [Theory(DisplayName = "Deve Retonar Com Multa E Juros")]
     [InlineData(3, 0.02, 0.01)]
     [InlineData(10, 0.03, 0.02)]
     [InlineData(15, 0.05, 0.05)]
-    public void DeveRetonarMultasEjuros3Dias(int dias, double multa, double juros)
+    public void DeveRetonarMultasEjuros(int dias, double multa, double juros)
     {
         var dataAtual = DateTime.Now;
         var contaDto = new ContaDto
