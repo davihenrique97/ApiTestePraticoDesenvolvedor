@@ -9,7 +9,7 @@ public static class ContaIncluirResponseMock
         return new ContaIncluirResponse
         {
             Status = StatusConta.ProblemaAoIncluir,
-            Menssagens = ["Problema ao Incluir a Conta.",
+            Mensagens = ["Problema ao Incluir a Conta.",
                               $"Já Existe Um Pagamento Com a Data {data} !"]
         };
     }
@@ -19,7 +19,7 @@ public static class ContaIncluirResponseMock
         return new ContaIncluirResponse
         {
             Status = StatusConta.ProblemaAoIncluir,
-            Menssagens = ["Problema ao Incluir a Conta.",
+            Mensagens = ["Problema ao Incluir a Conta.",
                               "Conta não Inclusa!"]
         };
     }

@@ -23,7 +23,7 @@ public class ContaService(IContaRepository contaRepository, IMapper mapper) : IC
             return new ContaIncluirResponse
             {
                 Status = StatusConta.ProblemaAoIncluir,
-                Menssagens = ["Problema ao Incluir a Conta.",
+                Mensagens = ["Problema ao Incluir a Conta.",
                               $"Já Existe Um Pagamento Com a Data {request.DataPagamento} !"]
             };
         }
@@ -39,7 +39,7 @@ public class ContaService(IContaRepository contaRepository, IMapper mapper) : IC
             return new ContaIncluirResponse
             {
                 Status = StatusConta.ProblemaAoIncluir,
-                Menssagens = ["Problema ao Incluir a Conta.",
+                Mensagens = ["Problema ao Incluir a Conta.",
                               "Conta não Inclusa!"]
             };
         }
@@ -48,7 +48,7 @@ public class ContaService(IContaRepository contaRepository, IMapper mapper) : IC
         {
             Status = StatusConta.ContaIncluida,
             Id = result,
-            Menssagens = ["Conta Incluída Com Sucesso."]
+            Mensagens = ["Conta Incluída Com Sucesso."]
         };
     }
 

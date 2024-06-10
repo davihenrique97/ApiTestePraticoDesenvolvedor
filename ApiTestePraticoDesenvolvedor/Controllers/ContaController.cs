@@ -39,7 +39,7 @@ public class ContaController(IContaService contaService) : ControllerBase
         {
             return UnprocessableEntity(new ContaListagemErrorResponse
             {
-                Menssagens = ["Nenhuma Conta Encontrada"]
+                Menssagens = ["Nenhuma Conta Encontrada."]
             });
         }
         return Ok(compras);

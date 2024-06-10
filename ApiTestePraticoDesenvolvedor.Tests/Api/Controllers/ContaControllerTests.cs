@@ -24,7 +24,7 @@ public class ContaControllerTests
         var contaIncluirResponse = new ContaIncluirResponse
         {
             Status = StatusConta.ContaIncluida,
-            Menssagens = ["Conta Incluída Com Sucesso."]
+            Mensagens = ["Conta Incluída Com Sucesso."]
         };
 
         _contaService.Setup(r => r.Incluir(It.IsAny<ContaIncluirRequest>()))
