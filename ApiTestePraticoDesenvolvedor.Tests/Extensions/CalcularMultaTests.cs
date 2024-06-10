@@ -21,7 +21,6 @@ public class CalcularMultaTests
         contaDto.DiasAtrasados.Should().Be(0);
         contaDto.RegraCalculo.Should().Be(string.Empty);
         contaDto.ValorCorrigido.Should().Be(contaDto.ValorOriginal);
-
     }
 
     [Theory(DisplayName = "Deve Retonar Com Multa E Juros")]
