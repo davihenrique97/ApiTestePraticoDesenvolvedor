@@ -34,9 +34,9 @@ public class ContaServiceIncluirTests
         _contaRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(true);
         _contaRepository.Setup(r => r.CadastrarConta(It.IsAny<ContaDto>())).Returns(Guid.NewGuid);
 
-        var compraService = new ContaService(_contaRepository.Object, _mapper);
+        var contaService = new ContaService(_contaRepository.Object, _mapper);
 
-        var result = compraService.Incluir(ContaIncluirRequestMock.GetMocked());
+        var result = contaService.Incluir(ContaIncluirRequestMock.GetMocked());
 
         result.Should().NotBeNull();
 
@@ -55,9 +55,9 @@ public class ContaServiceIncluirTests
 
         _contaRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(false);
 
-        var compraService = new ContaService(_contaRepository.Object, _mapper);
+        var ContaService = new ContaService(_contaRepository.Object, _mapper);
 
-        var result = compraService.Incluir(contaRequest);
+        var result = ContaService.Incluir(contaRequest);
 
         result.Should().NotBeNull();
         result.Should().BeEquivalentTo(esperado);
@@ -72,9 +72,9 @@ public class ContaServiceIncluirTests
         _contaRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(true);
         _contaRepository.Setup(r => r.CadastrarConta(It.IsAny<ContaDto>())).Returns(Guid.Empty);
 
-        var compraService = new ContaService(_contaRepository.Object, _mapper);
+        var ContaService = new ContaService(_contaRepository.Object, _mapper);
 
-        var result = compraService.Incluir(contaRequest);
+        var result = ContaService.Incluir(contaRequest);
 
         result.Should().NotBeNull();
         result.Should().BeEquivalentTo(esperado);

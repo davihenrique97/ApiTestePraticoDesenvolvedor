@@ -11,12 +11,12 @@ using Moq;
 namespace ApiTestePraticoDesenvolvedor.Tests.Application.Commands.Conta;
 public class ContaServiceListarTests
 {
-    private readonly Mock<IContaRepository> _compraRepository;
+    private readonly Mock<IContaRepository> _contaRepository;
     private readonly IMapper _mapper;
 
     public ContaServiceListarTests()
     {
-        _compraRepository = new Mock<IContaRepository>();
+        _contaRepository = new Mock<IContaRepository>();
 
         var config = new MapperConfiguration(opt =>
         {
@@ -33,10 +33,10 @@ public class ContaServiceListarTests
         var retorno = ContaDtoMock.ContasListagem();
         var esperado = _mapper.Map<IEnumerable<ContaListagemResponse>>(retorno);
 
-        _compraRepository.Setup(r => r.ListaContasCadastradas()).Returns(retorno);
-        var compraService = new ContaService(_compraRepository.Object, _mapper);
+        _contaRepository.Setup(r => r.ListaContasCadastradas()).Returns(retorno);
+        var contaService = new ContaService(_contaRepository.Object, _mapper);
 
-        var result = compraService.Listar(null);
+        var result = contaService.Listar(null);
 
         result.Should().NotBeNull();
         result.Should().BeEquivalentTo(esperado);
@@ -50,10 +50,10 @@ public class ContaServiceListarTests
 
         var esperado = _mapper.Map<IEnumerable<ContaListagemResponse>>(new List<ContaDto> { retorno });
 
-        _compraRepository.Setup(r => r.PesquisarConta(It.IsAny<Guid>())).Returns(retorno);
-        var compraService = new ContaService(_compraRepository.Object, _mapper);
+        _contaRepository.Setup(r => r.PesquisarConta(It.IsAny<Guid>())).Returns(retorno);
+        var contaService = new ContaService(_contaRepository.Object, _mapper);
 
-        var result = compraService.Listar(id);
+        var result = contaService.Listar(id);
 
         result.Should().NotBeNull();
         result.FirstOrDefault().Should().BeEquivalentTo(esperado.FirstOrDefault());

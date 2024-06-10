@@ -2,7 +2,7 @@
 using ApiTestePraticoDesenvolvedor.Domain.Dto;
 using FluentAssertions;
 
-namespace ApiTestePraticoDesenvolvedor.Tests.EcontaDtotensions;
+namespace ApiTestePraticoDesenvolvedor.Tests.Extensions;
 public class CalcularMultaTests
 {
     [Fact(DisplayName = "Deve Retornar Sem Multas e Juros")]
@@ -15,7 +15,7 @@ public class CalcularMultaTests
             DataVencimento = dataAtual,
         };
 
-        contaDto = CalculoMulta.CalcularMultaEJuros(contaDto);
+        contaDto = contaDto.CalcularMultaEJuros();
 
         contaDto.Should().NotBeNull();
         contaDto.DiasAtrasados.Should().Be(0);
@@ -37,7 +37,7 @@ public class CalcularMultaTests
             DataVencimento = dataAtual,
         };
 
-        contaDto = CalculoMulta.CalcularMultaEJuros(contaDto);
+        contaDto = contaDto.CalcularMultaEJuros();
 
         var multaEsperada = contaDto.ValorOriginal * multa;
         var jurosEsperado = contaDto.ValorOriginal * juros * dias;
