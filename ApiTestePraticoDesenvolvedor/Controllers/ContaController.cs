@@ -10,7 +10,7 @@ namespace ApiTestePraticoDesenvolvedor.Api.Controllers;
 [Route("/")]
 public class ContaController(IContaService contaService) : ControllerBase
 {
-    private readonly IContaService _compraService = contaService;
+    private readonly IContaService _contaService = contaService;
 
     [HttpPost]
     [Route("IncluirConta")]
@@ -18,7 +18,7 @@ public class ContaController(IContaService contaService) : ControllerBase
     public IActionResult IncluirConta([FromBody] ContaIncluirRequest request)
     {
 
-        var result = _compraService.Incluir(request);
+        var result = _contaService.Incluir(request);
 
         if (result.Status != StatusConta.ContaIncluida)
         {
@@ -33,15 +33,15 @@ public class ContaController(IContaService contaService) : ControllerBase
     [ProducesResponseType<ContaListagemResponse>(StatusCodes.Status200OK)]
     public IActionResult Consultar([FromQuery] string? id)
     {
-        var compras = _compraService.Listar(id);
+        var contas = _contaService.Listar(id);
 
-        if (!compras.Any())
+        if (!contas.Any())
         {
             return UnprocessableEntity(new ContaListagemErrorResponse
             {
                 Mensagens = ["Nenhuma Conta Encontrada."]
             });
         }
-        return Ok(compras);
+        return Ok(contas);
     }
 }
