@@ -23,13 +23,4 @@ public static class ContaIncluirResponseMock
                               "Conta não Inclusa!"]
         };
     }
-
-    public static ContaIncluirResponse ContaInclida()
-    {
-        return new ContaIncluirResponse
-        {
-            Status = StatusConta.ContaIncluida,
-            Menssagens = ["Conta Incluída Com Sucesso."]
-        };
-    }
 }

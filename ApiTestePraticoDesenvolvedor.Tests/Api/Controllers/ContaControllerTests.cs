@@ -18,7 +18,7 @@ public class ContaControllerTests
         _contaService = new Mock<IContaService>();
     }
 
-    [Fact]
+    [Fact(DisplayName = "Deve Incluir Uma Conta")]
     public void DeveIncluirConta()
     {
         var contaIncluirResponse = new ContaIncluirResponse
@@ -44,7 +44,7 @@ public class ContaControllerTests
         resposta.Should().BeEquivalentTo(contaIncluirResponse);
     }
 
-    [Fact]
+    [Fact(DisplayName = "Deve Consultar Uma Conta")]
     public void DeveConsultarUmaConta()
     {
         var listaContas = new List<ContaListagemResponse> {

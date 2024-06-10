@@ -26,7 +26,7 @@ public class ContaServiceListarTests
         _mapper = config.CreateMapper();
     }
 
-    [Fact]
+    [Fact(DisplayName = "Deve Listar Contas")]
     public void DeveListarContas()
     {
 
@@ -42,7 +42,7 @@ public class ContaServiceListarTests
         result.Should().BeEquivalentTo(esperado);
     }
 
-    [Fact]
+    [Fact(DisplayName = "Deve Listar Uma Conta")]
     public void DevePesquisarUmaConta()
     {
         var id = Guid.NewGuid().ToString();

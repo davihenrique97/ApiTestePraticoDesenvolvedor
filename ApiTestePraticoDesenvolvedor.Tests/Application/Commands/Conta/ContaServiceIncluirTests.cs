@@ -27,8 +27,8 @@ public class ContaServiceIncluirTests
         _mapper = config.CreateMapper();
     }
 
-    [Fact]
-    public void DeveIncluirPagamento()
+    [Fact(DisplayName = "Deve Incluir Conta")]
+    public void DeveIncluirConta()
     {
 
         _contaRepository.Setup(r => r.VerificaPagamento(It.IsAny<DateTime>())).Returns(true);
@@ -44,8 +44,8 @@ public class ContaServiceIncluirTests
         result.Menssagens.First().Should().BeEquivalentTo("Conta Incluída Com Sucesso.");
     }
 
-    [Fact]
-    public void DeveFalharAoIncluirPagamentoJaExistente()
+    [Fact(DisplayName = "Deve Falhar ao Incluir Conta Ja Existente")]
+    public void DeveFalharAoIncluirContaJaExistente()
     {
         var dataPagamento = DateTime.Now;
 
@@ -63,7 +63,7 @@ public class ContaServiceIncluirTests
         result.Should().BeEquivalentTo(esperado);
     }
 
-    [Fact]
+    [Fact(DisplayName = "Deve Falhar ao Incluir Conta Nao Inculsa")]
     public void DeveFalharAoIncluirContaNaoInclusa()
     {
         var esperado = ContaIncluirResponseMock.ContaIncluirResponseFalha();
