@@ -6,14 +6,7 @@ public static class CalculoMulta
 {
     private static CorrecaoDto CalcularMulta(ContaDto contaDto, int diasCorridos)
     {
-        double multa = 0;
-        if (diasCorridos == 0)
-        {
-            return new CorrecaoDto
-            {
-                Valor = multa
-            };
-        }
+        double multa;
 
         if (diasCorridos <= 3)
         {
@@ -46,14 +39,7 @@ public static class CalculoMulta
 
     private static CorrecaoDto CalcularJuros(ContaDto contaDto, int diasCorridos)
     {
-        double juros = 0;
-        if (diasCorridos == 0)
-        {
-            return new CorrecaoDto
-            {
-                Valor = juros
-            };
-        }
+        double juros;
 
         if (diasCorridos <= 3)
         {
@@ -63,7 +49,6 @@ public static class CalculoMulta
                 Valor = juros,
                 Messagem = $"Juros/dia 0,1%: R$ {juros}."
             };
-
         }
 
         if (diasCorridos <= 10)
@@ -76,11 +61,11 @@ public static class CalculoMulta
             };
         }
 
-        juros = contaDto.ValorOriginal * 0.05 * diasCorridos;
+        juros = contaDto.ValorOriginal * 0.03 * diasCorridos;
         return new CorrecaoDto
         {
             Valor = juros,
-            Messagem = $"Juros/dia 0.5%: R$ {juros}."
+            Messagem = $"Juros/dia 0.3%: R$ {juros}."
         };
     }
 
