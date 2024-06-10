@@ -1,5 +1,8 @@
-﻿namespace ApiTestePraticoDesenvolvedor.Domain.Entities;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace ApiTestePraticoDesenvolvedor.Domain.Entities;
+
+[ExcludeFromCodeCoverage]
 public class ContaEntity
 {
     public Guid IdConta { get; set; }
